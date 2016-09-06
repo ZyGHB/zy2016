@@ -12,14 +12,17 @@
 
         </activity>
         <activity android:name=".ui.adapter.ActivityMain">
+
+        </activity>
+        <activity android:name=".ui.ActivityShow">
+
+        </activity>
+        <activity android:name=".ui.ActivityLead">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.ActivityShow">
-
         </activity>
     </application>
 
