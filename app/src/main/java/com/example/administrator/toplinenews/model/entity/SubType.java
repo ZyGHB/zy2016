@@ -1,0 +1,22 @@
+package com.example.administrator.toplinenews.model.entity;
+
+/**
+ * Created by Administrator on 2016/9/6 0006.
+ */
+public class SubType
+{
+    private int subid;
+    private String subgroup;
+    public SubType(int subid, String subgroup) {
+        this.subid = subid;
+        this.subgroup = subgroup;
+    }
+    public int getSubid() {
+        return subid;
+    }
+    public String getSubgroup() {
+        return subgroup;
+
+    }
+}
+
