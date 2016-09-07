@@ -42,7 +42,9 @@ public class ActivityLead extends MyBaseActivity {
             if (arg0 >= 3) {
                 openActivity(ActivityMain.class);
                 finish();
+                //SharedPreferences是Android平台上一个轻量级的存储类，用来保存应用的一些常用配置。
                 SharedPreferences preferences=getSharedPreferences("runconfig", MODE_PRIVATE);
+                //共享偏好编辑器
                 SharedPreferences.Editor editor=preferences.edit();
                 editor.putBoolean("isFirstRun", false);
                 editor.commit();
@@ -84,6 +86,7 @@ public class ActivityLead extends MyBaseActivity {
     private void setPoint(int index) {
         for (int i = 0; i < points.length; i++) {
             if(i==index){
+                //透明度，变化范围是0.0f到1.0f之间，一般用于渐变动画，或者手势滑动view的渐变效果
                 points[i].setAlpha(255);
             }else{
                 points[i].setAlpha(100);
