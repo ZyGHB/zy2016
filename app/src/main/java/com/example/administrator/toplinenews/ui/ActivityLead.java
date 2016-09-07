@@ -72,6 +72,8 @@ public class ActivityLead extends MyBaseActivity {
         viewPager=(ViewPager) findViewById(R.id.viewpager);
         // 设置每一个具体界面的样式
         List<View> viewList=new ArrayList<View>();
+
+
         viewList.add(getLayoutInflater().inflate(R.layout.lead_1, null));
         viewList.add(getLayoutInflater().inflate(R.layout.lead_2, null));
         viewList.add(getLayoutInflater().inflate(R.layout.lead_3, null));
