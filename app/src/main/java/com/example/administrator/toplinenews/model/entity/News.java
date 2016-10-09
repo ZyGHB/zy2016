@@ -26,6 +26,35 @@ public class News implements Serializable {
      * 网页链接
      */
     private String link = "";
+
+    public void setNid(int nid) {
+        this.nid = nid;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public void setStamp(String stamp) {
+        this.stamp = stamp;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     private String stamp;
     /**
      * 新闻类型
@@ -41,7 +70,7 @@ public class News implements Serializable {
         this.link = url;
         this.type = type;
     }
-
+public News(){}
     public int getNid() {
         return nid;
     }

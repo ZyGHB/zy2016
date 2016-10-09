@@ -73,15 +73,16 @@ public class NewsAdaper extends MyBaseAdapter<News> {
         } else {
             holdView = (HoldView) convertView.getTag();
         }
-        News news = list.get(position);
+        News news = myList.get(position);
         holdView.tv_title.setText(news.getTitle());
         holdView.tv_text.setText(news.getSummary());
+        //Toast.makeText(context,news.getTitle()+"",Toast.LENGTH_LONG).show();
         holdView.iv_list_image.setImageBitmap(defaultBitmap);// 默认图片
         //1 ，得到图片的地址
         String uriImage=news.getIcon();
-        String newuriImage = uriImage.replaceAll("localhost", "192.168.2.14");
+        String newuriImage = uriImage.replaceAll("localhost", "118.244.212.82");
         LogUtil.d(newuriImage);
-         // 给每个图片控件存入编号把图片的名字作为表示
+        // 给每个图片控件存入编号把图片的名字作为表示
         holdView.iv_list_image.setTag(CommonUtil.NETPATH+newuriImage);
           // 获取图片 1.  先从网络 2. 如果已经下载过了存在本地文件中下次启动程序从文件读取 3. 当程序不关闭再次进入该界面从内存中读取
         Bitmap bitmap=loadImage.getBitmap(newuriImage);

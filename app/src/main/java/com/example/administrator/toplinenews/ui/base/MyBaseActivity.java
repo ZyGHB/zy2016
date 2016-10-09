@@ -1,10 +1,10 @@
 package com.example.administrator.toplinenews.ui.base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.administrator.toplinenews.common.LogUtil;
@@ -12,7 +12,7 @@ import com.example.administrator.toplinenews.common.LogUtil;
 /**
  * Created by Administrator on 2016/8/31 0031.
  */
-public class MyBaseActivity extends Activity {
+public class MyBaseActivity extends AppCompatActivity {
     protected int screen_w,screen_h;
     /* 略*/
     @Override

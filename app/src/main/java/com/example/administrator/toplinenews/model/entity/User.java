@@ -1,5 +1,7 @@
 package com.example.administrator.toplinenews.model.entity;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/9/5 0005.
  */
@@ -15,7 +17,7 @@ public class User {
     /**  头像 */
     private String portrait;
     /**  登陆日志 */
-   // private List<LoginLog> loginlog;
+    private List<LoginLog> loginlog;
 
     public String getUid() {
         return uid;
@@ -37,7 +39,7 @@ public class User {
         return portrait;
     }
 
-    /*public List<LoginLog> getLoginlog() {
+    public List<LoginLog> getLoginlog() {
         return loginlog;
-    }*/
+    }
 }

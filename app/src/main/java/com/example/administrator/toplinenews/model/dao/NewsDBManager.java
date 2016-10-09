@@ -6,8 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.administrator.toplinenews.model.entity.News;
+import com.example.administrator.toplinenews.model.entity.SubType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/9/1 0001.
@@ -89,6 +91,56 @@ public class NewsDBManager {
                 int type = cursor.getInt(cursor.getColumnIndex("type"));
                 News news = new News(nid, title, summary, icon, link, type);
                 newsList.add(news);
+            } while (cursor.moveToNext());
+            cursor.close();
+            db.close();
+        }
+        return newsList;
+    }
+
+    /*  略 */
+    /**
+     *  保存新闻分类
+     * @param
+     */
+    public boolean saveNewsType(List<SubType> types){
+        for(SubType type:types) {
+            try {
+                SQLiteDatabase db=helper.getWritableDatabase();
+                Cursor cursor=db.rawQuery("select * from type where subid="+type.getSubid(),null);
+                if(cursor.moveToFirst()){
+                    cursor.close();
+                    return false;
+                }
+                cursor.close();
+                ContentValues values=new ContentValues();
+                values.put("subid", type.getSubid());
+                values.put("subgroup", type.getSubgroup());
+                db.insert("type", null, values);
+                db.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     *  获取新闻分类
+     * @return  新闻的列表
+     */
+    public ArrayList<SubType> queryNewsType(){
+        ArrayList<SubType> newsList=new ArrayList<SubType>();
+        SQLiteDatabase db=helper.getReadableDatabase();
+        String sql="select * from type order by _id desc";
+        Cursor cursor=db.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int subId = cursor.getInt(cursor.getColumnIndex("subid"));
+                String subGroup = cursor.getString(cursor.getColumnIndex("subgroup"));
+                SubType subType = new SubType(subId, subGroup);
+                newsList.add(subType);
             } while (cursor.moveToNext());
             cursor.close();
             db.close();

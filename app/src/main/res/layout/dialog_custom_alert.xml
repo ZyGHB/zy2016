@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/colorgray">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:id="@+id/photo_library"
+        android:background="@drawable/text"
+        android:text="从照片库中选择"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/photo"
+        android:text="相机拍照"
+        android:background="@drawable/text"
+        android:gravity="center"/>
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="取消"
+        android:background="@drawable/text"
+        android:gravity="center"
+        android:id="@+id/btn_ok"/>
+
+</LinearLayout>

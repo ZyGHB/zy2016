@@ -2,19 +2,6 @@ package com.example.administrator.toplinenews.model.biz.parser;
 
 import android.content.Context;
 
-import com.example.administrator.toplinenews.model.entity.BaseEntity;
-import com.example.administrator.toplinenews.model.entity.News;
-import com.example.administrator.toplinenews.model.entity.NewsType;
-import com.example.administrator.toplinenews.model.entity.SubType;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Administrator on 2016/8/31 0031.
  */
@@ -49,11 +36,10 @@ public class ParserNews {
      * @param json
      * @return list
      */
-    public static List<SubType> parserTypeList(String json){
+   /* public static List<SubType> parserTypeList(String json){
         Gson gson = new Gson();
-        BaseEntity<List<NewsType>> typeEntity = gson.fromJson(json, new
-                TypeToken<BaseEntity<List<NewsType>>>() {}.getType());
-        for(NewsType type: typeEntity.getData()) {
+        BaseEntity<List<NewsGroup>> typeEntity = gson.fromJson(json, new TypeToken<BaseEntity<List<NewsGroup>>>() {}.getType());
+        for(NewsGroup type: typeEntity.getData()) {
             System.out.println(type.getSubgrp());
         }
         // 第一版没有分类列表, 暂且返回默认主分类的子分类
@@ -64,5 +50,5 @@ public class ParserNews {
         BaseEntity<List<News>> newsEntity = gson.fromJson(json, new
                 TypeToken<BaseEntity<List<News>>>() {}.getType());
         return newsEntity.getData();
-    }
+    }*/
 }

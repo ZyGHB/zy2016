@@ -24,8 +24,6 @@ public  abstract  class MyBaseAdapter<E> extends BaseAdapter {
         inflater = LayoutInflater.from(context);
     }
 
-    protected ArrayList<E> list = new ArrayList<E>();
-
     /* 略*/
 // 清除所有数据
     public void clear() {
@@ -35,17 +33,16 @@ public  abstract  class MyBaseAdapter<E> extends BaseAdapter {
     // 查找所有数据
     public List<E> getAdapterData() {
 
-        return list;
+        return myList;
     }
 
-    public void appendData(E e, boolean isClearOld) {
-        if (e == null) { // 非空验证
+    public void appendData(List<E> data,boolean isClearOld){
+        if(data==null)
             return;
-        }
-        if (isClearOld) {// 如果 true  清空原数据
-            list.clear();
-        }// 添加一条新数据到最后
-        list.add(e);
+        if(isClearOld)
+            myList.clear();
+        myList.addAll(data);
+        myList=data;
     }
 
     public void addendData(ArrayList<E> alist,boolean isClearOld){
@@ -53,27 +50,27 @@ public  abstract  class MyBaseAdapter<E> extends BaseAdapter {
             return;
         }
         if(isClearOld){
-            list.clear();
+            myList.clear();
         }
-        list.addAll(alist);
+        myList.addAll(alist);
     }
     public void appendDataTop(E t,boolean isClearOld) {
         if (t == null) { // 非空验证
             return;
         }
         if (isClearOld) {// 如果 true  清空原数据
-            list.clear();
+            myList.clear();
         }
-        list.add(0,t);
+        myList.add(0,t);
     }
     public void addendDataTop(ArrayList<E> alist,boolean isClearOld){
         if(alist==null){
             return;
         }
         if(isClearOld){
-            list.clear();
+            myList.clear();
         }
-        list.addAll(0,alist);
+        myList.addAll(0,alist);
     }
 
     public void update(){
@@ -82,21 +79,21 @@ public  abstract  class MyBaseAdapter<E> extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        if(list==null){
+        if(myList==null){
             return 0;
         }else{
-            return list.size();
+            return myList.size();
         }
     }
     @Override
     public E getItem(int position) {
-        if(list==null){
+        if(myList==null){
             return null;
         }
-        if(position>list.size()-1){
+        if(position>myList.size()-1){
             return null;
         }
-        return list.get(position);
+        return myList.get(position);
     }
     @Override
     public long getItemId(int position) {

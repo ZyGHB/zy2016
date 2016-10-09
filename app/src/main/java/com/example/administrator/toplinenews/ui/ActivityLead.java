@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.ui.adapter.ActivityMain;
 import com.example.administrator.toplinenews.ui.adapter.LeadImgAdapter;
 import com.example.administrator.toplinenews.ui.base.MyBaseActivity;
 
@@ -40,7 +39,7 @@ public class ActivityLead extends MyBaseActivity {
         public void onPageSelected(int arg0) {
             setPoint(arg0);
             if (arg0 >= 3) {
-                openActivity(ActivityMain.class);
+                openActivity(ActivityLogo.class);
                 finish();
                 //SharedPreferences是Android平台上一个轻量级的存储类，用来保存应用的一些常用配置。
                 SharedPreferences preferences=getSharedPreferences("runconfig", MODE_PRIVATE);
