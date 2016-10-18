@@ -1,13 +1,15 @@
 package com.example.administrator.toplinenews;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.app.Application;
 
-public class MainActivity extends AppCompatActivity {
+import cn.jpush.android.api.JPushInterface;
+
+public class MainActivity extends Application {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onCreate() {
+        super.onCreate();
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 }

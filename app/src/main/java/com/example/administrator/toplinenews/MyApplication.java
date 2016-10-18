@@ -7,6 +7,8 @@ import com.example.administrator.toplinenews.common.LogUtil;
 
 import java.util.HashMap;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by Administrator on 2016/8/31 0031.
  */
@@ -47,6 +49,8 @@ public class MyApplication extends Application {
         super.onCreate();
         application=this;
         LogUtil.d(LogUtil.TAG, "application oncreate");
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
     /** 内存不足的时候*/
     @Override
@@ -71,4 +75,5 @@ public class MyApplication extends Application {
         super.onConfigurationChanged(newConfig);
         LogUtil.d(LogUtil.TAG, "MyApplication onConfigurationChanged");
     }
+
 }

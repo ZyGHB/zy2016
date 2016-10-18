@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import com.example.administrator.toplinenews.R;
 import com.example.administrator.toplinenews.common.CommonUtil;
 import com.example.administrator.toplinenews.common.Const;
+import com.example.administrator.toplinenews.common.OkHttpUtil;
 import com.example.administrator.toplinenews.common.SharedPreferenceUtil;
 import com.example.administrator.toplinenews.common.SystemUtils;
 import com.example.administrator.toplinenews.common.URLErrorException;
@@ -40,7 +41,6 @@ import com.example.administrator.toplinenews.model.entity.User;
 import com.example.administrator.toplinenews.ui.BigMap;
 import com.example.administrator.toplinenews.ui.CollectActivity;
 import com.example.administrator.toplinenews.ui.FollowActivity;
-import com.example.administrator.toplinenews.ui.HttpUtil;
 import com.example.administrator.toplinenews.ui.base.LoginActivity;
 import com.example.administrator.toplinenews.ui.base.MyBaseActivity;
 import com.google.gson.Gson;
@@ -120,7 +120,7 @@ public class ActivityMain  extends MyBaseActivity {
                 mDrawerLayout.closeDrawer(mNavigationView);
                     Bundle bundle=new Bundle();
                 String[] account = SharedPreferenceUtil.getAccount(ActivityMain.this);
-                    Toast.makeText(ActivityMain.this,account[0],Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(ActivityMain.this,account[0],Toast.LENGTH_LONG).show();
                 if( account[0]==null||account[1]==null) {
                     bundle.putString("key","2");
                     openActivity(LoginActivity.class, bundle);
@@ -193,7 +193,7 @@ public class ActivityMain  extends MyBaseActivity {
                             public void onTabSelected(TabLayout.Tab tab) {
                                 super.onTabSelected(tab);
                                 //viewpager滑动和tablayout的点击同时触发这个方法一次
-                                Toast.makeText(getApplicationContext(), tab.getText(), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), tab.getText(), Toast.LENGTH_SHORT).show();
                                 //让选中的fragment加载新闻数据
                                 int position = tab.getPosition();
                                 DummyFragment fragment = (DummyFragment) adapter.getmFragmentList().get(position);
@@ -245,7 +245,8 @@ public class ActivityMain  extends MyBaseActivity {
 
     public void parseNewsGroupJsonString() {
         String url = "http://118.244.212.82:9092/newsClient/news_sort?ver=1&imei=1";
-        String data = HttpUtil.getJsonString(url);
+        //String data = HttpUtil.getJsonString(url);
+        String data = OkHttpUtil.getString(url);
         if (data == null) {
             Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
             return;

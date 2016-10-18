@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -53,6 +54,7 @@ public class ActivityShow extends MyBaseActivity {
     private ImageButton imgRtn;
     EditText  et_comment;
     private MenuItem item;
+    String urlPath;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +116,8 @@ public class ActivityShow extends MyBaseActivity {
         });
         //加载当前新闻评论的数量
         loadCommentCount(nid);
+        Log.d("ActivityShow", news.getLink());
+        Toast.makeText(ActivityShow.this,  news.getLink(), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -163,13 +167,14 @@ public class ActivityShow extends MyBaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+ //获取评论数量
     private void loadCommentCount(int nid) {
         //cmt_num?ver=版本号& nid=新闻编号
         Map<String, String> p = new HashMap<>();
         p.put("ver", CommonUtil.getVersionCode(this) + "");
         p.put("nid", nid+"");
-        String urlPath = UrlComposeUtil.getUrlPath(Const.URL_USER_COMMENT_COUNT, p);
+        urlPath = UrlComposeUtil.getUrlPath(Const.URL_USER_COMMENT_COUNT, p);
+        Log.d("ActivityShow",urlPath);
         new LoadCommentCountTask().execute(urlPath);
     }
 
@@ -196,6 +201,7 @@ public class ActivityShow extends MyBaseActivity {
 
         }
     }
+    //发送评论
     private void sendComment(int nid) {
 
         String content = et_comment.getText().toString().trim();
@@ -287,11 +293,11 @@ public class ActivityShow extends MyBaseActivity {
 
 // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间等使用
 
-        oks.setTitle("标题");
+        oks.setTitle(news.getTitle());
 
 // titleUrl是标题的网络链接，QQ和QQ空间等使用
 
-        oks.setTitleUrl("http://sharesdk.cn");
+        oks.setTitleUrl(news.getLink());
 
 // text是分享文本，所有平台都需要这个字段
 
@@ -303,11 +309,11 @@ public class ActivityShow extends MyBaseActivity {
 
 // url仅在微信（包括好友和朋友圈）中使用
 
-        oks.setUrl("http://sharesdk.cn");
+        oks.setUrl(news.getLink());
 
 // comment是我对这条分享的评论，仅在人人网和QQ空间使用
 
-        oks.setComment("我是测试评论文本");
+        oks.setComment(news.getSummary());
 
 // site是分享此内容的网站名称，仅在QQ空间使用
 
@@ -315,7 +321,7 @@ public class ActivityShow extends MyBaseActivity {
 
 // siteUrl是分享此内容的网站地址，仅在QQ空间使用
 
-        oks.setSiteUrl("http://sharesdk.cn");
+        oks.setSiteUrl(news.getLink());
 
 
 

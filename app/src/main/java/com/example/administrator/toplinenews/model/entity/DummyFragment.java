@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.administrator.toplinenews.R;
 import com.example.administrator.toplinenews.common.HttpAsyncTask;
 import com.example.administrator.toplinenews.common.LoadCallbackListener;
+import com.example.administrator.toplinenews.common.SystemUtils;
 import com.example.administrator.toplinenews.model.biz.parser.GsonParseUtil;
 import com.example.administrator.toplinenews.model.dao.NewsDBManager;
 import com.example.administrator.toplinenews.ui.ActivityShow;
@@ -45,25 +46,7 @@ public  class DummyFragment extends Fragment  implements SwipeRefreshLayout.OnRe
     View nofile;
     View bg;
     String url =  "http://118.244.212.82:9092/newsClient/"+"news_list?ver=1&subid=1&dir=1&nid=1&stamp=20140321&cnt=20";
-  /*  private Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 100) {
-                ArrayList<News> parser =(ArrayList<News>) msg.obj;
-                //  存在数据库中
-                for (int i = 0; i < parser.size(); i++)
-                {
-                    dbManager.insertNews(parser.get(i));
-                }
 
-                //加载到适配器中
-                loadDataFromDB(limit, offset);
-            } else if (msg.what == 200) {
-               // showToast(" 网络连接错误 ");
-            }
-            dialog.dismiss();
-        }
-    };*/
 
     public DummyFragment() {
     }
@@ -85,66 +68,6 @@ public  class DummyFragment extends Fragment  implements SwipeRefreshLayout.OnRe
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-
-        /*List<String> list = new ArrayList<String>();
-
-
-        for (int i = 0; i < VersionModel.data.length; i++) {
-            list.add(VersionModel.data[i]);
-        }*/
-       /* dbManager = NewsDBManager.getNewsDBManager(getActivity().getBaseContext());
-        //  先加载缓存的新闻
-
-        adapter = new MySimpleAdapter(getActivity().getBaseContext(),recyclerView);
-
-        if (dbManager.getCount() > 0) {
-            //  数据库加载
-            loadDataFromDB(limit, offset);
-        }
-        else {
-//  网络异步加载数据
-            loadData();
-        }
-
-        recyclerView.setAdapter(adapter);
-
-        return view;
-    }
-    private void loadData() {
-        dialog = ProgressDialog.show(getActivity().getBaseContext(), null, " 加载中，请稍候。。。 ");
-        // 启动新线程加载数据
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String path = "http://118.244.212.82:9092/newsClient/news_sort?ver=1&imei=1";
-                try {
-                    //newsParser = new ParserNews(ActivityMain.this);
-                    //  发送请求，得到返回数据
-                    String httpResponse = HttpClientUtil.httpGet(path);
-                    LogUtil.d(" 请求返回的数据 ", httpResponse);
-                    //  将返回的数据解析
-                    JSONObject object = new JSONObject(httpResponse);
-                    String s = object.toString();
-                    if (object.getString("message").equals("OK"))
-                    {
-                        // ArrayList<News> parser = newsParser.parser(object);
-                        List<News> parser = ParserNews.parserNewsList(s);
-                        m=new Message();
-                        m.obj=parser;
-                        m.what=100;
-                        handler.sendMessage(m);
-                    }
-                    else {
-                        m.what=200;
-                        handler.sendMessage(m);
-                    }
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                    //  出错
-                    handler.sendEmptyMessage(200);
-                }  }
-        }).start();*/
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
          bg = view.findViewById(R.id.dummyfrag_bg);
         container_progress = view.findViewById(R.id.container_progress);
@@ -183,9 +106,11 @@ public  class DummyFragment extends Fragment  implements SwipeRefreshLayout.OnRe
                 startActivity(intent);
             }
         });
-        myAsyncLoad(url);
+
         return view;
     }
+
+
     private void loadDataFromDB(int limit2, int offset2) {
 //  第一次是第 0  页 10  行
         ArrayList<News> data = dbManager.queryNews(limit2, offset2);
@@ -195,7 +120,21 @@ public  class DummyFragment extends Fragment  implements SwipeRefreshLayout.OnRe
     }
 
     public void myAsyncLoad(String url) {
+
         this.url = url;
+
+
+        if (SystemUtils.getInstance(getContext()).isNetConn()) {
+            getNewsFromNet(url);
+        } else {
+            getNewFromLocal();
+        }
+
+    }
+    private void getNewFromLocal() {
+        //从数据库中读取数据
+    }
+    private void getNewsFromNet(String url) {
         //        //在UI线程，创建AsyncTask子类的对象
         final HttpAsyncTask task = new HttpAsyncTask(getContext());
         //开启异步任务
@@ -204,7 +143,7 @@ public  class DummyFragment extends Fragment  implements SwipeRefreshLayout.OnRe
             public void onSuccess(String s) {
                 ArrayList<News> newses = GsonParseUtil.parseNewJsonString(s);
 
-                Toast.makeText(getContext(), "成功", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "成功", Toast.LENGTH_SHORT).show();
 
                 adapter.setNewses(newses);
                 adapter.notifyDataSetChanged();
@@ -235,6 +174,7 @@ public  class DummyFragment extends Fragment  implements SwipeRefreshLayout.OnRe
         });
         task.execute(url);
     }
+
 
     @Override
     public void onRefresh() {

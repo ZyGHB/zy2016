@@ -10,6 +10,18 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : "com.example.administrator.toplinenews",
+                JPUSH_APPKEY : "eb358bed54b12d4f99808c06", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
     }
     buildTypes {
         release {
@@ -53,4 +65,5 @@ android {
      compile files('src/main/libs/ShareSDK-Wechat-Core-2.7.7.jar')
      compile files('src/main/libs/ShareSDK-Wechat-Favorite-2.7.7.jar')
      compile files('src/main/libs/ShareSDK-Wechat-Moments-2.7.7.jar')
+     compile files('src/main/libs/jpush-android-2.1.9.jar')
  }
