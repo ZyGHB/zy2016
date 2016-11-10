@@ -3,7 +3,7 @@ package com.example.administrator.toplinenews;
 import android.app.Application;
 import android.content.res.Configuration;
 
-import com.example.administrator.toplinenews.common.LogUtil;
+import com.example.administrator.toplinenews.commons.LogUtil;
 
 import java.util.HashMap;
 

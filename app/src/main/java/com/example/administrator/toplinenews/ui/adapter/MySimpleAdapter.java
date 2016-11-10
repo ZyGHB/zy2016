@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.CommonUtil;
-import com.example.administrator.toplinenews.common.LoadImage;
-import com.example.administrator.toplinenews.common.LogUtil;
+import com.example.administrator.toplinenews.commons.CommonUtil;
+import com.example.administrator.toplinenews.commons.LoadImage;
+import com.example.administrator.toplinenews.commons.LogUtil;
 import com.example.administrator.toplinenews.model.entity.News;
 
 import java.util.ArrayList;

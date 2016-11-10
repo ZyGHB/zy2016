@@ -11,10 +11,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.CommonUtil;
-import com.example.administrator.toplinenews.common.Const;
-import com.example.administrator.toplinenews.common.OkHttpUtil;
-import com.example.administrator.toplinenews.common.UrlComposeUtil;
+import com.example.administrator.toplinenews.commons.CommonUtil;
+import com.example.administrator.toplinenews.commons.Const;
+import com.example.administrator.toplinenews.commons.OkHttpUtil;
+import com.example.administrator.toplinenews.commons.UrlComposeUtil;
 import com.example.administrator.toplinenews.model.entity.BaseEntity;
 import com.example.administrator.toplinenews.model.entity.BigmapUit;
 import com.example.administrator.toplinenews.model.entity.NewsGroup;

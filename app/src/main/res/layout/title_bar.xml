@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="104dp"
+    android:layout_height="80dp"
     android:gravity="top"
     android:minHeight="?attr/actionBarSize"
     app:layout_collapseMode="pin"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:titleMarginTop="13dp" />
+    app:titleMarginTop="20dp" />

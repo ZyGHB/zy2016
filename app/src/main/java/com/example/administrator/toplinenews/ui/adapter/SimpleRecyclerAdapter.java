@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.LoadImage;
+import com.example.administrator.toplinenews.commons.LoadImage;
 
 import java.util.ArrayList;
 import java.util.List;

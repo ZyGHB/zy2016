@@ -2,8 +2,8 @@ package com.example.administrator.toplinenews.model.biz.parser;
 
 import android.webkit.URLUtil;
 
-import com.example.administrator.toplinenews.common.OkHttpUtil;
-import com.example.administrator.toplinenews.common.URLErrorException;
+import com.example.administrator.toplinenews.commons.OkHttpUtil;
+import com.example.administrator.toplinenews.commons.URLErrorException;
 
 import java.io.IOException;
 

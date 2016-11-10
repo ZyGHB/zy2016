@@ -17,9 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.HttpAsyncTask;
-import com.example.administrator.toplinenews.common.LoadCallbackListener;
-import com.example.administrator.toplinenews.common.SystemUtils;
+import com.example.administrator.toplinenews.commons.HttpAsyncTask;
+import com.example.administrator.toplinenews.commons.LoadCallbackListener;
+import com.example.administrator.toplinenews.commons.SystemUtils;
 import com.example.administrator.toplinenews.model.biz.parser.GsonParseUtil;
 import com.example.administrator.toplinenews.model.dao.NewsDBManager;
 import com.example.administrator.toplinenews.ui.ActivityShow;

@@ -19,11 +19,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.CommonUtil;
-import com.example.administrator.toplinenews.common.Const;
-import com.example.administrator.toplinenews.common.OkHttpUtil;
-import com.example.administrator.toplinenews.common.SharedPreferenceUtil;
-import com.example.administrator.toplinenews.common.UrlComposeUtil;
+import com.example.administrator.toplinenews.commons.CommonUtil;
+import com.example.administrator.toplinenews.commons.Const;
+import com.example.administrator.toplinenews.commons.OkHttpUtil;
+import com.example.administrator.toplinenews.commons.SharedPreferenceUtil;
+import com.example.administrator.toplinenews.commons.UrlComposeUtil;
 import com.example.administrator.toplinenews.model.dao.LocaCommentDBM;
 import com.example.administrator.toplinenews.model.dao.LocalCommentSQL;
 import com.example.administrator.toplinenews.model.dao.LocalNewsDBManager;

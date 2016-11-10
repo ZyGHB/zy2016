@@ -4,21 +4,25 @@
     <item
         android:id="@+id/navigation_item_3"
         android:checked="true"
-        android:icon="@drawable/ic_action_search"
+        android:icon="@drawable/biz_navigation_tab_news"
         android:title="新闻头条" />
     <item
         android:id="@+id/navigation_item_1"
         android:checked="true"
-        android:icon="@drawable/ic_action_search"
+        android:icon="@drawable/biz_navigation_tab_local_news"
         android:title="本地收藏" />
     <item
         android:id="@+id/navigation_item_2"
-        android:icon="@drawable/ic_action_add"
+        android:icon="@drawable/biz_navigation_tab_pics"
         android:title="大图新闻" />
     <item
         android:id="@+id/navigation_item_4"
-        android:icon="@drawable/ic_action_add"
+        android:icon="@drawable/biz_navigation_tab_ties"
         android:title="跟帖" />
+    <item
+        android:id="@+id/navigation_item_5"
+        android:icon="@drawable/ic_play_circle_outline_big"
+        android:title="视频播放" />
 </group>
 
 

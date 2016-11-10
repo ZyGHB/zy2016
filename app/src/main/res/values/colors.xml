@@ -6,4 +6,10 @@
     <color name="colorPrimaryl">#FF7F8EE1</color>
     <color name="colorWhite">#FFFFEFFF</color>
     <color name="colorgray">#F9CCCFCE</color>
+    <color name="colorpink">#FFCDD2</color>
+    <color name="pink">#FFCDD2</color>
+    <color name="black">#212121</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#727272</color>
+    <color name="dim">#B6B6B6</color>
 </resources>

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.LogUtil;
+import com.example.administrator.toplinenews.commons.LogUtil;
 import com.example.administrator.toplinenews.model.entity.Comments;
 
 /**

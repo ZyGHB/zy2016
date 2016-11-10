@@ -2,36 +2,31 @@ package com.example.administrator.toplinenews.ui.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.CommonUtil;
-import com.example.administrator.toplinenews.common.Const;
-import com.example.administrator.toplinenews.common.OkHttpUtil;
-import com.example.administrator.toplinenews.common.SharedPreferenceUtil;
-import com.example.administrator.toplinenews.common.SystemUtils;
-import com.example.administrator.toplinenews.common.URLErrorException;
-import com.example.administrator.toplinenews.common.UrlComposeUtil;
+import com.example.administrator.toplinenews.commons.CommonUtil;
+import com.example.administrator.toplinenews.commons.Const;
+import com.example.administrator.toplinenews.commons.OkHttpUtil;
+import com.example.administrator.toplinenews.commons.SharedPreferenceUtil;
+import com.example.administrator.toplinenews.commons.SystemUtils;
+import com.example.administrator.toplinenews.commons.URLErrorException;
+import com.example.administrator.toplinenews.commons.UrlComposeUtil;
 import com.example.administrator.toplinenews.model.biz.parser.UserManager;
 import com.example.administrator.toplinenews.model.dao.NewsDBManager;
 import com.example.administrator.toplinenews.model.entity.BaseEntity;
@@ -41,6 +36,7 @@ import com.example.administrator.toplinenews.model.entity.User;
 import com.example.administrator.toplinenews.ui.BigMap;
 import com.example.administrator.toplinenews.ui.CollectActivity;
 import com.example.administrator.toplinenews.ui.FollowActivity;
+import com.example.administrator.toplinenews.ui.VideoPlayActivity;
 import com.example.administrator.toplinenews.ui.base.LoginActivity;
 import com.example.administrator.toplinenews.ui.base.MyBaseActivity;
 import com.google.gson.Gson;
@@ -112,7 +108,7 @@ public class ActivityMain  extends MyBaseActivity {
         });
 */
         View view = View.inflate(this,R.layout.drawer_header,null);
-         header = (CircleImageView) view.findViewById(R.id.iv_header_img);
+         header = (CircleImageView) view.findViewById(R.id.iv_header1);
          use_name= (TextView) view.findViewById(R.id.use_name);
         header.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +129,7 @@ public class ActivityMain  extends MyBaseActivity {
             }
         });
         mNavigationView.addHeaderView(view);
-       // mContentFrame = (FrameLayout) findViewById(R.id.nav_contentframe);
+       //mContentFrame = (FrameLayout) findViewById(R.id.nav_contentframe);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -152,6 +148,9 @@ public class ActivityMain  extends MyBaseActivity {
                         break;
                     case R.id.navigation_item_4:
                         openActivity(FollowActivity.class);
+                        break;
+                   case R.id.navigation_item_5:
+                        openActivity(VideoPlayActivity.class);
                         break;
                     default:
                         return true;
@@ -179,7 +178,7 @@ public class ActivityMain  extends MyBaseActivity {
                         adapter = new ViewPagerAdapter(getSupportFragmentManager());
                         for(int i=0;i<titles.size();i++)
                         {
-                            adapter.addFrag(new DummyFragment(getResources().getColor(R.color.accent_material_light)), titles.get(i));
+                            adapter.addFrag(new DummyFragment(getResources().getColor(R.color.colorPrimary)), titles.get(i));
 
                         }
                         viewPager.setAdapter(adapter);
@@ -215,12 +214,12 @@ public class ActivityMain  extends MyBaseActivity {
         }.start();
 
 
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.htab_collapse_toolbar);
-        collapsingToolbarLayout.setTitleEnabled(false);
+        //final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.htab_collapse_toolbar);
+        //collapsingToolbarLayout.setTitleEnabled(false);
 
-        ImageView header = (ImageView) findViewById(R.id.header);
+        //ImageView header = (ImageView) findViewById(R.id.header);
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+       /* Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.header);
 
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
@@ -230,12 +229,12 @@ public class ActivityMain  extends MyBaseActivity {
 
                 int vibrantColor = palette.getVibrantColor(R.color.colorPrimary);
                 int vibrantDarkColor = palette.getDarkVibrantColor(R.color.colorPrimaryDark);
-                collapsingToolbarLayout.setContentScrimColor(vibrantColor);
-                collapsingToolbarLayout.setStatusBarScrimColor(vibrantDarkColor);
+                //collapsingToolbarLayout.setContentScrimColor(vibrantColor);
+                //collapsingToolbarLayout.setStatusBarScrimColor(vibrantDarkColor);
             }
         });
 
-
+*/
 
     }
         public static  void setmune()
@@ -304,7 +303,7 @@ public class ActivityMain  extends MyBaseActivity {
     }
 
     private void setUpToolbar() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.tabanim_toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setTitle("今日头条");

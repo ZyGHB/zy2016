@@ -15,10 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.toplinenews.R;
-import com.example.administrator.toplinenews.common.CommonUtil;
-import com.example.administrator.toplinenews.common.Const;
-import com.example.administrator.toplinenews.common.URLErrorException;
-import com.example.administrator.toplinenews.common.UrlComposeUtil;
+import com.example.administrator.toplinenews.commons.CommonUtil;
+import com.example.administrator.toplinenews.commons.Const;
+import com.example.administrator.toplinenews.commons.URLErrorException;
+import com.example.administrator.toplinenews.commons.UrlComposeUtil;
 import com.example.administrator.toplinenews.model.biz.parser.ParserUser;
 import com.example.administrator.toplinenews.model.biz.parser.UserManager;
 

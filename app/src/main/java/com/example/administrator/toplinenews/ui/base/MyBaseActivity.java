@@ -7,7 +7,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.example.administrator.toplinenews.common.LogUtil;
+import com.example.administrator.toplinenews.commons.LogUtil;
 
 /**
  * Created by Administrator on 2016/8/31 0031.

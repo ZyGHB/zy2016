@@ -1,12 +1,20 @@
  apply plugin: 'com.android.application'
-
+ apply plugin: 'android-apt'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
 
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.example.administrator.toplinenews"
-        minSdkVersion 17
+        minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -66,4 +74,13 @@ android {
      compile files('src/main/libs/ShareSDK-Wechat-Favorite-2.7.7.jar')
      compile files('src/main/libs/ShareSDK-Wechat-Moments-2.7.7.jar')
      compile files('src/main/libs/jpush-android-2.1.9.jar')
+     compile project(':videoplayer')
+
+     compile 'com.jakewharton:butterknife:8.4.0'
+     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+     compile 'com.vinaysshenoy:mugen:1.0.2'
+     compile 'com.squareup.retrofit2:retrofit:2.1.0'
+     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+     compile 'com.squareup.picasso:picasso:2.5.2'
  }
